@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rheza Jonathan — Video Editor & Content Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --ink:#0e0d0b;
+  --ink-mid:#4a4843;
+  --ink-soft:#8a8780;
+  --ink-faint:#c8c5bc;
+  --cream:#f5f2ea;
+  --cream-dark:#ece8dd;
+  --night:#111009;
+  --night-mid:#1c1b17;
+  --gold:#c9903a;
+  --gold-pale:#f0d9b0;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Syne',sans-serif;
+  --border:rgba(14,13,11,0.1);
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.1rem 4rem;
+  background:rgba(245,242,234,0.88);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:var(--serif);
+  font-size:1.25rem;
+  letter-spacing:0.04em;
+  color:var(--ink);
+  text-decoration:none;
+}
+.nav-logo span{color:var(--gold);font-style:italic;}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{
+  font-size:0.72rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  text-decoration:none;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--gold);}
+
+/* ── LABEL ── */
+.label{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-size:0.68rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+  margin-bottom:1.2rem;
+}
+.label::before{content:'';width:24px;height:1px;background:var(--gold);}
+
+hr.rule{border:none;border-top:1px solid var(--border);margin:0;}
+
+/* ═══════════ §1 HERO ═══════════ */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:8rem 4rem 5rem;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 60% at 80% 30%, var(--cream-dark) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(201,144,58,0.08) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-location{
+  font-size:0.72rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-bottom:2rem;
+  display:flex;align-items:center;gap:0.6rem;
+  animation:fadeUp 0.6s ease both 0.1s;
+}
+.hero-location::before{
+  content:'';width:8px;height:8px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+}
+.hero-headline{
+  font-family:var(--serif);
+  font-size:clamp(3rem,7.5vw,7rem);
+  line-height:1.0;
+  letter-spacing:-0.02em;
+  font-weight:600;
+  max-width:860px;
+  margin-bottom:2.5rem;
+  animation:fadeUp 0.7s ease both 0.25s;
+}
+.hero-headline .italic{font-style:italic;color:var(--gold);}
+.hero-sub{
+  font-size:clamp(0.95rem,1.6vw,1.1rem);
+  color:var(--ink-mid);
+  max-width:500px;
+  line-height:1.8;
+  margin-bottom:3rem;
+  animation:fadeUp 0.7s ease both 0.4s;
+}
+.hero-actions{
+  display:flex;align-items:center;gap:1.8rem;flex-wrap:wrap;
+  animation:fadeUp 0.7s ease both 0.55s;
+}
+.btn-primary{
+  display:inline-block;
+  background:var(--ink);color:var(--cream);
+  text-decoration:none;
+  font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;
+  padding:1rem 2.2rem;border-radius:2px;
+  transition:background 0.2s,transform 0.15s;
+}
+.btn-primary:hover{background:var(--gold);transform:translateY(-2px);}
+.btn-ghost{
+  font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--ink-mid);text-decoration:none;font-weight:600;
+  border-bottom:1px solid var(--ink-faint);padding-bottom:2px;
+  transition:color 0.2s,border-color 0.2s;
+}
+.btn-ghost:hover{color:var(--gold);border-color:var(--gold);}
+.hero-scroll{
+  position:absolute;bottom:2.5rem;right:4rem;
+  font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--ink-soft);
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+  animation:fadeUp 0.7s ease both 0.8s;
+}
+.hero-scroll::after{
+  content:'';width:1px;height:48px;background:var(--ink-faint);
+}
+
+/* ═══════════ §2 OFFER ═══════════ */
+#offer{padding:7rem 4rem;}
+.offer-intro{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
+  align-items:end;margin-bottom:4rem;
+}
+.offer-intro h2{
+  font-family:var(--serif);
+  font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:600;line-height:1.2;
+}
+.offer-intro p{font-size:0.94rem;color:var(--ink-mid);line-height:1.85;}
+
+.offer-cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.offer-card{
+  background:var(--cream);
+  padding:2.5rem 2.2rem 2.8rem;
+  transition:background 0.25s;
+  position:relative;
+}
+.offer-card:hover{background:var(--cream-dark);}
+.offer-icon{
+  font-size:1.4rem;margin-bottom:1.2rem;
+  display:block;line-height:1;
+}
+.offer-card h3{
+  font-family:var(--serif);
+  font-size:1.4rem;font-weight:600;
+  line-height:1.25;margin-bottom:0.9rem;
+}
+.offer-card .tagline{
+  font-size:0.8rem;letter-spacing:0.06em;
+  color:var(--gold);font-weight:600;
+  text-transform:uppercase;margin-bottom:1rem;
+}
+.offer-card p{font-size:0.88rem;color:var(--ink-mid);line-height:1.85;}
+.offer-list{
+  list-style:none;margin-top:1.2rem;
+  display:flex;flex-direction:column;gap:0.5rem;
+}
+.offer-list li{
+  font-size:0.84rem;color:var(--ink-mid);
+  display:flex;align-items:flex-start;gap:0.5rem;
+  line-height:1.5;
+}
+.offer-list li::before{
+  content:'→';color:var(--gold);
+  font-size:0.75rem;flex-shrink:0;margin-top:2px;
+}
+
+/* ═══════════ §3 WHO IT'S FOR ═══════════ */
+#for{
+  background:var(--night);
+  padding:7rem 4rem;
+}
+#for .label{color:var(--gold-pale);}
+#for .label::before{background:var(--gold);}
+.for-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:6rem;align-items:start;
+  max-width:1100px;margin:0 auto;
+}
+.for-title{
+  font-family:var(--serif);
+  font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:600;line-height:1.2;
+  color:#f5f2ea;margin-bottom:0.5rem;
+}
+.for-title em{color:var(--gold);font-style:italic;}
+.for-sub{font-size:0.9rem;color:rgba(245,242,234,0.45);margin-top:1rem;}
+
+.for-list{list-style:none;margin-top:2.5rem;}
+.for-list li{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1.2rem 0;
+  border-bottom:1px solid rgba(245,242,234,0.08);
+  color:rgba(245,242,234,0.8);
+  font-size:0.92rem;line-height:1.6;
+}
+.for-list li:first-child{border-top:1px solid rgba(245,242,234,0.08);}
+.for-check{
+  flex-shrink:0;width:18px;height:18px;border-radius:50%;
+  background:var(--gold);margin-top:2px;
+  display:flex;align-items:center;justify-content:center;
+}
+.for-check::after{
+  content:'';width:6px;height:4px;
+  border-left:1.5px solid var(--night);
+  border-bottom:1.5px solid var(--night);
+  transform:rotate(-45deg) translateY(-1px);
+}
+.for-aside{
+  padding-top:1rem;
+}
+.for-quote{
+  font-family:var(--serif);
+  font-size:clamp(1.5rem,2.2vw,2rem);
+  font-style:italic;
+  color:rgba(245,242,234,0.55);
+  line-height:1.5;
+  padding-left:2rem;
+  border-left:2px solid var(--gold);
+  margin-bottom:3rem;
+}
+.not-for{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(245,242,234,0.1);
+  border-radius:3px;
+  padding:1.5rem 1.8rem;
+}
+.not-for h4{
+  font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:rgba(245,242,234,0.35);margin-bottom:1rem;font-weight:600;
+}
+.not-for ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.not-for li{
+  font-size:0.85rem;color:rgba(245,242,234,0.45);
+  display:flex;align-items:center;gap:0.7rem;
+}
+.not-for li::before{content:'×';color:rgba(245,242,234,0.25);font-size:1rem;}
+
+/* ═══════════ §4 ABOUT ═══════════ */
+#about{padding:7rem 4rem;}
+.about-inner{
+  display:grid;grid-template-columns:380px 1fr;
+  gap:6rem;align-items:start;
+}
+.about-left{}
+.about-photo{
+  aspect-ratio:4/5;
+  background:var(--cream-dark);
+  border:1px solid var(--border);
+  border-radius:2px;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:0.6rem;
+  color:var(--ink-faint);font-size:0.78rem;letter-spacing:0.08em;
+  margin-bottom:2rem;
+}
+.about-photo svg{opacity:0.35;}
+.about-tools{}
+.tools-label{
+  font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--ink-soft);font-weight:600;margin-bottom:1rem;
+}
+.tools-grid{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.tool-tag{
+  font-size:0.75rem;
+  background:var(--cream-dark);
+  border:1px solid var(--border);
+  border-radius:2px;
+  padding:0.3rem 0.75rem;
+  color:var(--ink-mid);
+  letter-spacing:0.03em;
+}
+.about-right{}
+.about-right h2{
+  font-family:var(--serif);
+  font-size:clamp(2rem,3vw,2.8rem);
+  font-weight:600;line-height:1.2;
+  margin-bottom:1.8rem;margin-top:0.4rem;
+}
+.about-right h2 em{color:var(--gold);font-style:italic;}
+.about-right p{
+  font-size:0.95rem;color:var(--ink-mid);
+  line-height:1.9;margin-bottom:1.3rem;
+}
+.about-links{
+  display:flex;gap:1.2rem;flex-wrap:wrap;
+  margin-top:0.5rem;margin-bottom:2.5rem;
+}
+.about-links a{
+  font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;font-weight:600;
+  border-bottom:1px solid var(--gold-pale);padding-bottom:2px;
+  transition:border-color 0.2s;
+}
+.about-links a:hover{border-color:var(--gold);}
+.about-stats{
+  display:flex;gap:3rem;padding-top:2rem;
+  border-top:1px solid var(--border);
+}
+.stat-val{
+  font-family:var(--serif);
+  font-size:2.2rem;font-weight:600;color:var(--gold);
+  line-height:1;margin-bottom:0.3rem;
+}
+.stat-label{font-size:0.72rem;color:var(--ink-soft);letter-spacing:0.06em;}
+
+/* ═══════════ §5 CONTACT ═══════════ */
+#contact{
+  background:var(--night-mid);
+  padding:7rem 4rem;
+}
+#contact .label{color:var(--gold-pale);}
+#contact .label::before{background:var(--gold);}
+.contact-top{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:end;margin-bottom:4rem;
+}
+.contact-top h2{
+  font-family:var(--serif);
+  font-size:clamp(2rem,3.5vw,3.2rem);
+  font-weight:600;line-height:1.15;color:#f5f2ea;
+}
+.contact-top p{font-size:0.92rem;color:rgba(245,242,234,0.45);line-height:1.85;}
+
+.contact-grid{
+  display:grid;grid-template-columns:1.5fr 1fr;
+  gap:5rem;align-items:start;
+}
+.form-row{margin-bottom:1.3rem;}
+.form-row label{
+  display:block;font-size:0.68rem;letter-spacing:0.14em;
+  text-transform:uppercase;color:rgba(245,242,234,0.35);
+  margin-bottom:0.5rem;font-weight:600;
+}
+.form-row input,.form-row textarea,.form-row select{
+  width:100%;
+  background:rgba(245,242,234,0.05);
+  border:1px solid rgba(245,242,234,0.12);
+  border-radius:2px;
+  padding:0.9rem 1rem;
+  font-family:var(--sans);font-size:0.9rem;
+  color:#f5f2ea;outline:none;
+  transition:border-color 0.2s;
+  resize:vertical;
+  -webkit-appearance:none;
+}
+.form-row input::placeholder,.form-row textarea::placeholder{color:rgba(245,242,234,0.2);}
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus{
+  border-color:var(--gold);
+}
+.form-row select option{background:var(--night-mid);color:#f5f2ea;}
+.form-submit{
+  display:inline-block;
+  background:var(--gold);color:var(--night);
+  border:none;cursor:pointer;
+  font-family:var(--sans);font-size:0.72rem;letter-spacing:0.14em;
+  text-transform:uppercase;font-weight:600;
+  padding:1rem 2.4rem;border-radius:2px;margin-top:0.5rem;
+  transition:background 0.2s,transform 0.15s;
+}
+.form-submit:hover{background:var(--gold-pale);transform:translateY(-2px);}
+
+.contact-aside h3{
+  font-family:var(--serif);font-size:1.3rem;font-weight:600;
+  color:#f5f2ea;margin-bottom:1.2rem;
+}
+.contact-aside p{
+  font-size:0.85rem;color:rgba(245,242,234,0.4);
+  line-height:1.85;margin-bottom:2rem;
+}
+.contact-links{display:flex;flex-direction:column;gap:0.85rem;margin-bottom:2.5rem;}
+.contact-links a{
+  font-size:0.88rem;color:rgba(245,242,234,0.75);
+  text-decoration:none;
+  display:flex;align-items:center;gap:0.8rem;
+  transition:color 0.2s;
+}
+.contact-links a:hover{color:var(--gold);}
+.c-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+}
+.turnaround{
+  background:rgba(201,144,58,0.1);
+  border:1px solid rgba(201,144,58,0.25);
+  border-radius:2px;
+  padding:1rem 1.2rem;
+  font-size:0.8rem;
+  color:var(--gold-pale);
+  line-height:1.6;
+}
+.turnaround strong{display:block;font-weight:600;margin-bottom:0.3rem;letter-spacing:0.05em;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--night);
+  padding:2rem 4rem;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid rgba(245,242,234,0.06);
+  font-size:0.75rem;color:rgba(245,242,234,0.25);
+  letter-spacing:0.06em;
+}
+footer a{color:rgba(245,242,234,0.4);text-decoration:none;transition:color 0.2s;}
+footer a:hover{color:var(--gold);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(28px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  #hero,#offer,#about,#contact{padding:5rem 1.5rem;}
+  #for{padding:5rem 1.5rem;}
+  .offer-intro{grid-template-columns:1fr;gap:1.5rem;}
+  .offer-cards{grid-template-columns:1fr;}
+  .for-inner{grid-template-columns:1fr;gap:3rem;}
+  .for-quote{font-size:1.3rem;}
+  .about-inner{grid-template-columns:1fr;gap:2.5rem;}
+  .about-photo{aspect-ratio:3/2;}
+  .contact-top{grid-template-columns:1fr;gap:1.5rem;}
+  .contact-grid{grid-template-columns:1fr;gap:3rem;}
+  .about-stats{gap:2rem;}
+  footer{flex-direction:column;gap:0.5rem;text-align:center;}
+  .hero-scroll{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Rheza <span>Jonathan</span></a>
+  <ul class="nav-links">
+    <li><a href="#offer">Services</a></li>
+    <li><a href="#for">Who I Help</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Work With Me</a></li>
+  </ul>
+</nav>
+
+
+<!-- ══════════════════════════
+     §1 · HEADLINE + SUBHEADLINE
+══════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <p class="hero-location">Kampala, Uganda · Available Worldwide</p>
+  <h1 class="hero-headline">
+    Video editing &amp;<br/>
+    content strategy<br/>
+    that <span class="italic">actually converts.</span>
+  </h1>
+  <p class="hero-sub">
+    I help YouTube creators, brands, and growing businesses turn raw footage and blank pages into high-retention content — fast. Turnaround in 24–48 hours.
+  </p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#contact">Work with me →</a>
+    <a class="btn-ghost" href="#offer">See what I offer</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<hr class="rule" />
+
+
+<!-- ══════════════════════════
+     §2 · OFFER
+══════════════════════════ -->
+<section id="offer">
+  <div class="offer-intro">
+    <div>
+      <span class="label">What I offer</span>
+      <h2>Three ways we can work together</h2>
+    </div>
+    <p>I work across video, writing, and content management — so you can hire one person and keep everything consistent, on-brand, and on time.</p>
+  </div>
+
+  <div class="offer-cards">
+    <!-- Card 1 -->
+    <div class="offer-card">
+      <span class="offer-icon">🎬</span>
+      <div class="tagline">Video Editing</div>
+      <h3>High-Retention Video & Short-Form Content</h3>
+      <p>From faceless YouTube automation to viral Reels and Shorts — I cut for watch time, not just aesthetics.</p>
+      <ul class="offer-list">
+        <li>YouTube long-form: documentary, motivational, finance niches</li>
+        <li>TikTok, Instagram Reels & YouTube Shorts</li>
+        <li>Podcast & talking-head editing with audio cleanup</li>
+        <li>Colour grading, sound design & motion graphics</li>
+        <li>Script-to-screen full production</li>
+      </ul>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="offer-card">
+      <span class="offer-icon">📄</span>
+      <div class="tagline">SEO Writing</div>
+      <h3>SEO Content Writing & AI-Driven Strategy</h3>
+      <p>Content that ranks on Google, engages real readers, and converts visitors — not just filler words.</p>
+      <ul class="offer-list">
+        <li>Long-form blog posts, whitepapers & eBooks</li>
+        <li>Landing pages, ad copy & product descriptions</li>
+        <li>Amazon & Shopify SEO-friendly listings</li>
+        <li>Full content calendars from scratch</li>
+        <li>Article refreshes — updated for current SEO standards</li>
+      </ul>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="offer-card">
+      <span class="offer-icon">📘</span>
+      <div class="tagline">Content Management</div>
+      <h3>Social Media & Content Management</h3>
+      <p>Consistent voice, consistent posting — across every platform you're on.</p>
+      <ul class="offer-list">
+        <li>Editorial style guides for Medium & Substack</li>
+        <li>How-to guides, blog posts & educational content</li>
+        <li>Community moderation: Reddit, Discord, YouTube, Telegram</li>
+        <li>Daily video pipelines for small businesses & creators</li>
+        <li>Social media posts, captions & product copy</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+
+<!-- ══════════════════════════
+     §3 · WHO IT'S FOR
+══════════════════════════ -->
+<section id="for" style="max-width:100%;padding-left:0;padding-right:0;">
+  <div class="for-inner" style="padding:0 4rem;">
+    <div>
+      <span class="label">Who this is for</span>
+      <h2 class="for-title">Made for people who are <em>serious</em> about growth.</h2>
+      <p class="for-sub">You don't need another freelancer who disappears. You need someone who shows up, communicates, and delivers.</p>
+      <ul class="for-list">
+        <li><span class="for-check"></span><span>YouTube creators running automation channels who need consistent, niche-specific edits that hold viewers past the 30-second mark.</span></li>
+        <li><span class="for-check"></span><span>Startups and small businesses that need professional written content — but don't have budget for a full-time content team.</span></li>
+        <li><span class="for-check"></span><span>Brands and coaches who want short-form video (Reels, TikToks, Shorts) repurposed from existing long-form content.</span></li>
+        <li><span class="for-check"></span><span>Founders and creators tired of delayed freelancers — you need a 24–48 hour turnaround and clear communication throughout.</span></li>
+        <li><span class="for-check"></span><span>Businesses looking for someone who can handle multiple content formats (video, writing, social) without juggling three separate contractors.</span></li>
+      </ul>
+    </div>
+
+    <div class="for-aside">
+      <p class="for-quote">"If any of this sounds like your situation — you're in the right place."</p>
+      <div class="not-for">
+        <h4>What I don't do</h4>
+        <ul>
+          <li>Logo design or branding from scratch</li>
+          <li>Web development or backend design</li>
+          <li>Complex 3D motion design</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+
+<!-- ══════════════════════════
+     §4 · ABOUT YOU
+══════════════════════════ -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-left">
+      <div class="about-photo">
+        <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="18" r="9" stroke="#8a8780" stroke-width="1.5"/>
+          <path d="M6 42c0-9.94 8.06-18 18-18s18 8.06 18 18" stroke="#8a8780" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>Your photo here</span>
+      </div>
+      <div class="about-tools">
+        <p class="tools-label">Tools & platforms</p>
+        <div class="tools-grid">
+          <span class="tool-tag">Premiere Pro</span>
+          <span class="tool-tag">DaVinci Resolve</span>
+          <span class="tool-tag">After Effects</span>
+          <span class="tool-tag">CapCut</span>
+          <span class="tool-tag">Canva</span>
+          <span class="tool-tag">WordPress</span>
+          <span class="tool-tag">Notion</span>
+          <span class="tool-tag">Rank Math</span>
+          <span class="tool-tag">Yoast</span>
+          <span class="tool-tag">Google Search Console</span>
+          <span class="tool-tag">Ubersuggest</span>
+          <span class="tool-tag">Grammarly</span>
+          <span class="tool-tag">Copyscape</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-right">
+      <span class="label">About me</span>
+      <h2>Multidisciplinary. Remote. <em>Reliable.</em></h2>
+      <p>
+        I'm Rheza — a multidisciplinary video editor and content writer based in Kampala, Uganda. I work with creators, startups, and growing businesses that need professional content delivered without the typical delays.
+      </p>
+      <p>
+        My background spans both sides of content: I've edited short documentaries and YouTube channels, and I write SEO-driven copy that ranks. Previously, I worked as a Reddit engagement assistant for <strong>Meterwork</strong> and as a freelance video editor across multiple niches. I'm currently publishing at <a href="https://substack.com/@autonomylabs" target="_blank" style="color:var(--gold);text-decoration:none;">Autonomy Labs on Substack</a>.
+      </p>
+      <p>
+        Working remotely means I stay focused on one thing: results that align with what you actually asked for — within 24–48 hours for standard projects, 1–5 days for complex ones. All writing is 100% Copyscape-passed.
+      </p>
+      <div class="about-links">
+        <a href="https://www.linkedin.com/in/rheza-a12163b9" target="_blank">LinkedIn →</a>
+        <a href="https://substack.com/@autonomylabs" target="_blank">Substack →</a>
+        <a href="mailto:snackroy@proton.me">Request Portfolio →</a>
+      </div>
+      <div class="about-stats">
+        <div>
+          <div class="stat-val">24h</div>
+          <div class="stat-label">Standard turnaround</div>
+        </div>
+        <div>
+          <div class="stat-val">3</div>
+          <div class="stat-label">Core service areas</div>
+        </div>
+        <div>
+          <div class="stat-val">100%</div>
+          <div class="stat-label">Copyscape-passed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+
+<!-- ══════════════════════════
+     §5 · CONTACT
+══════════════════════════ -->
+<section id="contact" style="max-width:100%;padding-left:0;padding-right:0;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 4rem;">
+    <div class="contact-top">
+      <div>
+        <span class="label">Work with me</span>
+        <h2>Let's make something worth watching.</h2>
+      </div>
+      <p>I'm currently available for freelance work and creative collaboration. Fill in the form or reach out directly — I reply within 48 hours. A portfolio with video reels and writing samples is available upon request.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="form-row">
+          <label>Your name</label>
+          <input type="text" placeholder="Jane Smith" />
+        </div>
+        <div class="form-row">
+          <label>Email address</label>
+          <input type="email" placeholder="jane@example.com" />
+        </div>
+        <div class="form-row">
+          <label>Service needed</label>
+          <select>
+            <option value="" disabled selected>Select a service…</option>
+            <option>Video Editing — YouTube / Long-Form</option>
+            <option>Video Editing — Short-Form (Reels, Shorts, TikTok)</option>
+            <option>Podcast & Talking Head Editing</option>
+            <option>SEO Content Writing</option>
+            <option>Content & Social Media Management</option>
+            <option>Multiple / Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Tell me about the project</label>
+          <textarea rows="5" placeholder="What are you working on? What does success look like for you?"></textarea>
+        </div>
+        <button class="form-submit" type="button">Send message →</button>
+      </div>
+
+      <div class="contact-aside">
+        <h3>Other ways to reach me</h3>
+        <p>Prefer a quick chat before filling anything in? That's completely fine — reach out directly.</p>
+        <div class="contact-links">
+          <a href="mailto:snackroy@proton.me"><span class="c-dot"></span>snackroy@proton.me</a>
+          <a href="https://form.jotform.com/260453829326360" target="_blank"><span class="c-dot"></span>Contact via JotForm</a>
+          <a href="https://www.linkedin.com/in/rheza-a12163b9" target="_blank"><span class="c-dot"></span>linkedin.com/in/rheza</a>
+          <a href="https://substack.com/@autonomylabs" target="_blank"><span class="c-dot"></span>autonomylabs on Substack</a>
+        </div>
+        <div class="turnaround">
+          <strong>⚡ Turnaround times</strong>
+          Standard edits: 24–48 hours<br/>
+          Complex projects: 1–5 business days<br/>
+          Portfolio available on request
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Rheza Jonathan · Kampala, Uganda</span>
+  <span><a href="mailto:snackroy@proton.me">snackroy@proton.me</a></span>
+</footer>
+
+</body>
+</html>
